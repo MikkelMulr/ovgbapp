@@ -407,7 +407,8 @@ footer {
 	position: fixed;
 	bottom: 0px;
 	height: 9vh;
-	width: 100vw;
+  width: 100vw;
+  z-index: 800;
 }
 
 footer .tab {
@@ -421,7 +422,7 @@ footer .tab {
 	border-bottom: none;
 	border-top-left-radius: 1.5vh;
 	border-top-right-radius: 1.5vh;
-	box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
 }
 
 footer .tab:hover {
