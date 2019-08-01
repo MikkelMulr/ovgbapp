@@ -14,7 +14,6 @@ window.onload = function () {
   const DROP_DOWN_END = document.querySelector('.path-end-select'); // Select the drop down
   const DROP_DOWN_ITEM_END = document.querySelectorAll('.path-end-select li'); // Create array of li items in drop down list
   const GO_BTN = document.querySelector('.go-btn'); // go button inside the path finder menu
-  const END_POINT = document.querySelector('.endPoint');
 
 	// Constants to access the tabs
 	const TABS = document.querySelectorAll('.tab');
@@ -73,8 +72,7 @@ window.onload = function () {
 
 	// Set this via QR or nav button
 	// *** Hard coded for testing purposes ***
-  // currently defaults to 0 if ID is not set
-  let currentLocation = id ? id : 0;
+  let currentLocation = id;
 
   let placeholderStart = document.querySelector('.placeholder-start');
   let placeholderEnd = document.querySelector('.placeholder-end');
@@ -341,10 +339,11 @@ window.onload = function () {
       }
       PATH_FINDER.classList.add('hidden'); // hide pathfinder dropdown
       // hide endpoint menu while starting point is being selected
-      END_POINT.classList.remove('hidden');	
+      document.querySelector('.endPoint').classList.remove('hidden');	
 
       // Update to and from values to prevent errors when drop downs are left open upon outside click on map	
-      placeholderStart.textContent = parkFeature[i].name;
+      placeholderStart.textContent = parkFeature[item.value - 1].name;
+      // currentLocation = LOCATIONS[item.value];
       // Reset destination display text 
       placeholderEnd.textContent = 'Where to?'
             
@@ -358,7 +357,7 @@ window.onload = function () {
 				item.classList.remove('hidden');
 			}
       // Reset dropdown text value to select destination
-      END_POINT.classList.remove('hidden');
+    document.querySelector('.endPoint').classList.remove('hidden');
     });
     
   });
@@ -372,11 +371,14 @@ window.onload = function () {
     } 
   });
 
+  function findIndex(array, item) {
+    return array.indexOf(item);
+  }
 
 	// Create event listener on drop down menu
 	DROP_DOWN_START.addEventListener('click', function() {
     // Hide the endpoint select
-    END_POINT.classList.toggle('hidden');
+    document.querySelector('.endPoint').classList.toggle('hidden');
     // Loop through the elements in the drop down and add event listeners to them
     // i represents index of item in array
 		DROP_DOWN_ITEM_START.forEach((item, i) => {
