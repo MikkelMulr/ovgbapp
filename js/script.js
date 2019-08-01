@@ -74,7 +74,7 @@ window.onload = function () {
 	// Set this via QR or nav button
 	// *** Hard coded for testing purposes ***
   // currently defaults to 0 if ID is not set
-  let currentLocation = 0;
+  let currentLocation = id ? id : 0;
 
   let placeholderStart = document.querySelector('.placeholder-start');
   let placeholderEnd = document.querySelector('.placeholder-end');
@@ -371,8 +371,8 @@ window.onload = function () {
     PLACE_HOLDER.textContent = "Select Destination";  
       
     PATH_FINDER.classList.toggle('hidden');
-    placeholderStart.textContent = parkFeature[currentLocation].name;
- 
+      placeholderStart.textContent = parkFeature[currentLocation].name;
+
   });
 
 
