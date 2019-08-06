@@ -23,7 +23,7 @@ body {
 	--bike-path: #B15222;
 	--day-lily: #7D6287;
 	--map: #707070;
-  	--go-button: #FAF7E9;
+  --go-button: #FAF7E9;
 
 }
 
@@ -285,7 +285,6 @@ section {
 	border-top-left-radius: 2vh;
 	border-top-right-radius: 2vh;
 	box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
-	z-index: 700;
 }
 
 #titleBar {
@@ -326,7 +325,7 @@ section {
 #closeButton {
 	height: 40%;
 	width: auto;
-	filter:  drop-shadow(1px 1px 1px #383838);
+	filter: drop-shadow(1px 1px 1px #383838);
 }
 
 #contentBox {
@@ -350,7 +349,7 @@ section {
 }
 
 #contentImageBox .galleryImage {
-	width: 23%;
+	width: 24%;
 	height: auto;
 	border-radius: 1vh;
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
@@ -381,7 +380,6 @@ footer {
 	bottom: 0px;
 	height: 9vh;
 	width: 100vw;
-	z-index: 800;
 }
 
 footer .tab {
@@ -395,7 +393,7 @@ footer .tab {
 	border-bottom: none;
 	border-top-left-radius: 1.5vh;
 	border-top-right-radius: 1.5vh;
-        box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
 }
 
 footer .tab:hover {
@@ -443,9 +441,9 @@ footer img {
 	max-width: 75%;
 }
 
-#contentTextBox h3 {
-	/*display: flex;
-	flex-direction: row;*/
+label {
+	display: flex;
+	flex-direction: row;
 	padding: 10px 20px;
 	margin-bottom: 2vh;
 	font-size: 3vh;
@@ -455,13 +453,12 @@ footer img {
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	 text-align: center;
 	border-radius: 1vh;
 }
 
-/*label h4 {
+label h4 {
 	margin-left: 1vw;
-}*/
+}
 
 #tabIcon {
 	width: auto;
@@ -493,9 +490,11 @@ footer img {
 	margin-left: 82%;
 	margin-bottom: 2%;
 }
+
 .smImage:active {
 	border: 1px solid #f7f2db;
 }
+
 .bigImage,
 .smImage {
 	border-radius: 1vh;
@@ -516,63 +515,33 @@ footer img {
 	display: none;
 	position: relative;
 }
-/* portrait tablets and large phones */
-@media only screen and (min-width: 600px) {
-      section{
-        margin: 0 auto;
-        width: 100%;
-    }
-     .fromCircle, .toCircle{
-        width: 10px;
-        height: 10px;
-    }
-    .pathfinder{
-        height: 16vh;
-	font-size: 2.7vh; 
-    }
-    .path-start-select, .path-end-select{
-        width: 80%;
-    }
-    .label{
-        width: 15%;
-    }
-    .go-btn{
-        width: 13%;
-        height: 100%;
-    }
-    button{
-        font-size: 2.7vh;
-    }
-}
-/* STYLES FOR LARGE DISPLAYS - landscape tablets, destop*/
+
+/* STYLES FOR LARGE DISPLAYS */
 
 @media only screen and (min-width: 769px) {
-	.destination-select, 
-	footer {
-		display: none !important;
-	} 
- 
+	.destination-select {
+		display: none;
+	}
+
 	section {
 		position: absolute;
 		top: 0;
 		width: 100vw;
 		height: 100vh;
 		overflow: scroll;
-
 	}
 
 	#svgMapObj {
 		position: relative;
+		left: 30vw;
 		width: auto;
 		height: 100%;
 		/* overflow: scroll; */
-		margin: 0 auto;
 	}
 
 	#svgMap {
 		width: auto;
 		height: 100%;
-
 	}
 
 	#infoPanel {
@@ -624,7 +593,7 @@ footer img {
 	#closeButton {
 		height: 40%;
 		width: auto;
-		filter:  drop-shadow(1px 1px 1px #383838);
+		filter: drop-shadow(1px 1px 1px #383838);
 	}
 
 	#contentBox {
@@ -673,7 +642,7 @@ footer img {
 		padding: 2vh 1.5vw;
 	}
 
-	h4 {
+	label {
 		display: flex;
 		flex-direction: row;
 		padding: 10px 20px;
@@ -688,9 +657,9 @@ footer img {
 		border-radius: 1vh;
 	}
 
-	/*label h4 {
+	label h4 {
 		margin-left: 0.5vw;
-	}*/
+	}
 
 	#tabIcon {
 		width: auto;
@@ -707,12 +676,5 @@ footer img {
 		left: 0;
 		height: 10vh;
 		width: 30vw;
-	}
-}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-	#svgMapObj{
-		margin: 0 auto;
-		width: 100%;
 	}
 }
