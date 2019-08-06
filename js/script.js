@@ -282,7 +282,6 @@ window.onload = function () {
 
 	/* FUNCTION DEFINITIONS */
 
-
 	// const SVG_PATH = (id, i) => {
 	// 	pathToDraw = MAP_SVG.querySelector('#' + parkFeature[id].paths[i][0]);
 	// 	console.log("something else here");
@@ -332,6 +331,9 @@ window.onload = function () {
 
 	// if anywhere in the map is clicked the dropdown will close
 	MAP_SVG.addEventListener('click', function(e) {
+        //reset the place holder text to where to?
+        PLACE_HOLDER.textContent = "Where to?";
+        
 		DROP_DOWN_ITEM_START.forEach((item, i) => {
 			// toggle the hidden class on each item in the list (unhiding them)
 			if (i !== 0) {
@@ -364,12 +366,12 @@ window.onload = function () {
   });
   
   TOP_BAR.addEventListener('click', function() {
+    // change the text on place holder
+    PLACE_HOLDER.textContent = "Select Destination";  
+      
     PATH_FINDER.classList.toggle('hidden');
-    if(parsed && currentLocation) {
       placeholderStart.textContent = parkFeature[currentLocation].name;
-    } else {
-      placeholderStart.textContent = parkFeature[id].name;
-    } 
+
   });
 
 
@@ -436,57 +438,6 @@ window.onload = function () {
     // Hide with the path finder menu
     PATH_FINDER.classList.add('hidden');
   });
-
-  // NEW DROP DOWN CODE ********* END
-  // ************************************************************************************************
-
-
-
-  // ************************************************************************************************
-  // OLD DROP DOWN *****************
-
-	// // if anywhere in the map is clicked the drop down will close
-	// MAP_SVG.addEventListener('click', function (e) {
-	// 	DROP_DOWN_ITEM.forEach(item => {
-	// 		// toggle the hidden class on each item in the list (reveling them)
-	// 		if (item.value !== 0) {
-	// 			item.classList.add('hidden');
-	// 		} else {
-	// 			item.classList.remove('hidden');
-	// 		}
-	// 		// Reset dropdown text value to select destination
-	// 		PLACE_HOLDER.textContent = `Select Destination`;
-	// 	});
-	// });
-
-	// // Create event listener on drop down menu
-	// DROP_DOWN.addEventListener('click', function () {
-	// 	// Loop through the elements in the drop down and add event listeners to them
-	// 	DROP_DOWN_ITEM.forEach(item => {
-	// 		// toggle the hidden class on each item in the list (reveling them)
-	// 		item.classList.toggle('hidden');
-
-	// 		// Add the event listener to the item
-	// 		item.addEventListener('click', function () {
-	// 			// will set destination location based item in drop down being selected
-
-	// 			if (item.value !== 0) {
-	// 				pathZoomIn(item.value - 1);
-	// 				if (id !== item.value - 1) {
-	// 					pathToDraw = MAP_SVG.querySelector('#' + parkFeature[id].paths[item.value - 1]);
-	// 				}
-	// 				//Draws the path, duration and length is hard coded
-	// 				DRAW(pathToDraw, 5, 3000)
-	// 				PLACE_HOLDER.textContent = 'Go to: ' + LOCATIONS[item.value];
-	// 			}
-	// 			// Upon clicking an item in the list set the displayed text to the selected location name
-	// 			// PLACE_HOLDER.textContent = 'Go to: ' + LOCATIONS[item.value];
-
-	// 		});
-	// 	});
-  // });
-  // ************************************************************************************************
-  // ************************************************************************************************
 
 	/* OPENING AND CLOSING THE INFORMATION PANEL AND POPULATING IT WITH THE CONTENT */
 
