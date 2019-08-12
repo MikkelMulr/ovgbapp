@@ -93,7 +93,6 @@ window.onload = function () {
   // drop down state management
   let startDropDownState = false;
   let endDropDownState = false;
-  let selectedItem = currentLocation;
 
 
 	// set destination position based on dropdown selection, initially based on id
@@ -409,11 +408,21 @@ window.onload = function () {
 	DROP_DOWN_START.addEventListener('click', function () {
       // Hide the endpoint select
       END_POINT.classList.toggle('hidden');
-      // DROP_DOWN_START.style.backgroundColor = "#f7f2db";
 
       // Loop through the elements in the drop down and add event listeners to them
       // i represents index of item in array
       DROP_DOWN_ITEM_START.forEach((item, i) => {
+
+        if(i - 1 === currentLocation) {
+          item.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+          item.style.color = '#f7f2db';
+          placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+          placeholderStart.style.color = "#f7f2db";
+
+        } else {
+          item.style.backgroundColor = "#FAF7E9";
+          item.style.color = '#383838';
+        }
 
         // toggle the hidden class on each item in the list (unhiding them)
         // hide destination from starting list
@@ -421,21 +430,11 @@ window.onload = function () {
         // Add the event listener to the item
         item.addEventListener('click', function () {
           startDropDownState = !startDropDownState;
-          selectedItem = i - 1;
         // will set destination location based item in dropdown being selected
 				if (i !== 0) {
           currentLocation = i - 1;
         }
 
-        // Upon clicking an item in the list set the displayed text to the selected location name
-        if(startDropDownState) {
-          // DROP_DOWN_START.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
-          placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
-          placeholderStart.style.color = "#f7f2db";
-        } else {
-          // DROP_DOWN_START.style.backgroundColor = "#f7f2db";
-
-        }
         placeholderStart.textContent = parkFeature[currentLocation].name;
 			});
     });
@@ -447,6 +446,18 @@ window.onload = function () {
 	DROP_DOWN_END.addEventListener('click', function () {
 		// Loop through the elements in the drop down and add event listeners to them
 		DROP_DOWN_ITEM_END.forEach((item, i) => {
+
+      if(i - 1 === destination) {
+        item.style.backgroundColor = BACKGROUND_COLORS[destination];
+        item.style.color = '#f7f2db';
+        placeholderEnd.style.backgroundColor = BACKGROUND_COLORS[destination];
+        placeholderEnd.style.color = "#f7f2db";
+
+      } else {
+        item.style.backgroundColor = "#FAF7E9";
+        item.style.color = '#383838';
+      }
+
 			// toggle the hidden class on each item in the list (unhiding them)
 			// hide destination if it has been selected as start position
 			item.classList.toggle('hidden');
@@ -457,15 +468,7 @@ window.onload = function () {
 				if (i !== 0) {
 					destination = i - 1;
         }
-        
-        // Upon clicking an item in the list set the displayed text to the selected location name
-        if(endDropDownState) {
-          // DROP_DOWN_END.style.backgroundColor = BACKGROUND_COLORS[destination];
-          placeholderEnd.style.backgroundColor = BACKGROUND_COLORS[destination];
-          placeholderEnd.style.color = "#f7f2db";
-        } else {
-          // DROP_DOWN_END.style.backgroundColor = "#f7f2db";
-        }
+
         placeholderEnd.textContent = parkFeature[destination].name;
 			});
     });
