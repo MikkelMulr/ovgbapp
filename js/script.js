@@ -473,6 +473,8 @@ window.onload = function () {
 
         if(destination === 0) {
           colorBikePath();
+        } else {
+          resetBikePath();
         }
 	});
 
@@ -971,7 +973,14 @@ window.onload = function () {
   function colorBikePath() {
     TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
       stroke: 'orange',
-    })
+    });
+}
+
+function resetBikePath() {
+  TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+    stroke: '#f7f2db',
+  })
+  
 }
 
 	// END IMAGE GALLERY SCRIPT ----------
