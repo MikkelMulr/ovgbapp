@@ -394,6 +394,9 @@ window.onload = function () {
 
 		PATH_FINDER.classList.toggle('hidden');
     placeholderStart.textContent = parkFeature[currentLocation].name;
+    placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+    placeholderStart.style.color = "#f7f2db";
+
     
 		// To accomidate the dropdowns removing redundent locations
 		if (destination) {
@@ -426,11 +429,11 @@ window.onload = function () {
 
         // Upon clicking an item in the list set the displayed text to the selected location name
         if(startDropDownState) {
-          DROP_DOWN_START.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+          // DROP_DOWN_START.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
           placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
           placeholderStart.style.color = "#f7f2db";
         } else {
-          DROP_DOWN_START.style.backgroundColor = "#f7f2db";
+          // DROP_DOWN_START.style.backgroundColor = "#f7f2db";
 
         }
         placeholderStart.textContent = parkFeature[currentLocation].name;
@@ -457,11 +460,11 @@ window.onload = function () {
         
         // Upon clicking an item in the list set the displayed text to the selected location name
         if(endDropDownState) {
-          DROP_DOWN_END.style.backgroundColor = BACKGROUND_COLORS[destination];
+          // DROP_DOWN_END.style.backgroundColor = BACKGROUND_COLORS[destination];
           placeholderEnd.style.backgroundColor = BACKGROUND_COLORS[destination];
           placeholderEnd.style.color = "#f7f2db";
         } else {
-          DROP_DOWN_END.style.backgroundColor = "#f7f2db";
+          // DROP_DOWN_END.style.backgroundColor = "#f7f2db";
         }
         placeholderEnd.textContent = parkFeature[destination].name;
 			});
@@ -543,8 +546,9 @@ window.onload = function () {
 			openInfoPanel();
 			//update starting point text to respresent new starting location
       placeholderStart.textContent = parkFeature[currentLocation].name;
-      placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];  
-      DROP_DOWN_START.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+      placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
+      placeholderStart.style.color = "#f7f2db";
+      // DROP_DOWN_START.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
 			// hide the path finder menu
 			PATH_FINDER.classList.add('hidden');
 		};
