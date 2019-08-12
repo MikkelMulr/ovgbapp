@@ -471,7 +471,7 @@ window.onload = function () {
 			// Hide with the path finder menu
       PATH_FINDER.classList.add('hidden');
 
-        if(destination === 0) {
+        if(destination === 0 || currentLocation === 0) {
           colorBikePath();
         } else {
           resetBikePath();
