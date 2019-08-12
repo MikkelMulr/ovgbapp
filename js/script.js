@@ -324,32 +324,7 @@ window.onload = function () {
 	// NEW DROP DOWN CODE ********* START
 
   // Dropdown opens on page load// or at end of splash animation, then closes again
-
-  function sneakPeakDropDown() {
-    PATH_FINDER.classList.remove('hidden');
-    TweenMax
-    .from(PATH_FINDER, 1, {
-      delay: 0.5,
-      opacity: 0,
-      top: 10,
-      onComplete:  function() {
-        TweenMax
-        .to(PATH_FINDER, 0.8, {
-          delay: 3,
-          opacity: 0,
-          top: 0,
-          onComplete:  function() {
-            PATH_FINDER.classList.add('hidden');
-            PATH_FINDER.style.opacity = 1;
-            PATH_FINDER.style.top = "9vh";
-          }
-        });
-      }  
-    });
-  }
-
   sneakPeakDropDown();
-
 
 	// if anywhere in the map is clicked the dropdown will close
 	MAP_SVG.addEventListener('click', function (e) {
@@ -477,8 +452,10 @@ window.onload = function () {
 
 	// Handle Go button event, will execute zoom function upon click
 	GO_BTN.addEventListener('click', function () {
-		// Call zoom function based on current destination selection
-		if (destination) {
+    // Call zoom function based on current destination selection
+    if(!destination) {
+      destination = 0;
+    }
 			console.log('Loc: ' + currentLocation + ' ' + parkFeature[currentLocation].name);
 			console.log('Dest: ' + destination + ' ' + parkFeature[destination].name);
 			pathZoomIn(currentLocation, destination);
@@ -492,8 +469,11 @@ window.onload = function () {
 			DRAW(pathToDraw, duration, length, repeat);
 
 			// Hide with the path finder menu
-			PATH_FINDER.classList.add('hidden');
-		}
+      PATH_FINDER.classList.add('hidden');
+
+        if(destination === 0) {
+          colorBikePath();
+        }
 	});
 
 	// NEW DROP DOWN CODE ********* END
@@ -962,7 +942,37 @@ window.onload = function () {
 
 	CLOSE_GALLERY.addEventListener('click', function () {
 		closeImgGallery();
-	});
+  });
+  
+  function sneakPeakDropDown() {
+    PATH_FINDER.classList.remove('hidden');
+    TweenMax
+    .from(PATH_FINDER, 1, {
+      delay: 0.5,
+      opacity: 0,
+      top: 10,
+      onComplete:  function() {
+        TweenMax
+        .to(PATH_FINDER, 0.8, {
+          delay: 3,
+          opacity: 0,
+          top: 0,
+          onComplete:  function() {
+            PATH_FINDER.classList.add('hidden');
+            PATH_FINDER.style.opacity = 1;
+            PATH_FINDER.style.top = "9vh";
+          }
+        });
+      }  
+    });
+  }
+
+  // Testing animating the bike path
+  function colorBikePath() {
+    TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+      stroke: 'orange',
+    })
+}
 
 	// END IMAGE GALLERY SCRIPT ----------
 };
