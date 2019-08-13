@@ -969,18 +969,17 @@ window.onload = function () {
     });
   }
 
-  // Testing animating the bike path
-  function colorBikePath() {
-    TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
-      stroke: 'orange',
-    });
+// Testing animating the bike path
+function colorBikePath() {
+  TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+    stroke: 'orange',
+  });
 }
 
 function resetBikePath() {
   TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
     stroke: '#f7f2db',
   })
-  
 }
 
 	// END IMAGE GALLERY SCRIPT ----------
