@@ -93,6 +93,7 @@ window.onload = function () {
   // drop down state management
   let startDropDownState = false;
   let endDropDownState = false;
+  let dropdownState = false;
 
 
 	// set destination position based on dropdown selection, initially based on id
@@ -366,7 +367,12 @@ window.onload = function () {
 		// change the text on place holder
 		PLACE_HOLDER.textContent = "Select Destination";
 
-		PATH_FINDER.classList.toggle('hidden');
+    if(dropdownState) {
+      closeDropDown();
+    } else  {
+      openDropDown();
+    }
+
     placeholderStart.textContent = parkFeature[currentLocation].name;
     placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
     placeholderStart.style.color = "#f7f2db";
@@ -469,13 +475,14 @@ window.onload = function () {
 			DRAW(pathToDraw, duration, length, repeat);
 
 			// Hide with the path finder menu
-      PATH_FINDER.classList.add('hidden');
+      // PATH_FINDER.classList.add('hidden');
+      closeDropDown();
 
-        if(destination === 0 || currentLocation === 0) {
-          colorBikePath();
-        } else {
-          resetBikePath();
-        }
+        // if(destination === 0 || currentLocation === 0) {
+        //   colorBikePath();
+        // } else {
+        //   resetBikePath();
+        // }
 	});
 
 	// NEW DROP DOWN CODE ********* END
@@ -969,19 +976,48 @@ window.onload = function () {
     });
   }
 
-  // Testing animating the bike path
-  function colorBikePath() {
-    TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
-      stroke: 'orange',
+  function openDropDown() {
+    PATH_FINDER.classList.remove('hidden');
+    TweenMax
+    .from(PATH_FINDER, 0.8, {
+      delay: 0.2,
+      opacity: 0,
+      top: 10,
+      onComplete:  function() {
+        PATH_FINDER.style.opacity = 1;
+        PATH_FINDER.style.top = "9vh";
+        dropdownState = true;
+      }  
     });
-}
+  }
 
-function resetBikePath() {
-  TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
-    stroke: '#f7f2db',
-  })
-  
-}
+  function closeDropDown() {
+    TweenMax
+    .to(PATH_FINDER, 0.8, {
+      delay: 0.2,
+      opacity: 0,
+      top: 0,
+      onComplete:  function() {
+        PATH_FINDER.style.opacity = 1;
+        PATH_FINDER.style.top = "9vh";
+        dropdownState = false;
+        PATH_FINDER.classList.add('hidden');
+      }  
+    });
+  }
+
+// Testing animating the bike path
+// function colorBikePath() {
+//   TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+//     stroke: 'orange',
+//   });
+// }
+
+// function resetBikePath() {
+//   TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+//     stroke: '#f7f2db',
+//   })
+// }
 
 	// END IMAGE GALLERY SCRIPT ----------
 };
