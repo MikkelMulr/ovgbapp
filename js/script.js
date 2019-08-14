@@ -366,7 +366,8 @@ window.onload = function () {
 		// change the text on place holder
 		PLACE_HOLDER.textContent = "Select Destination";
 
-		PATH_FINDER.classList.toggle('hidden');
+    // PATH_FINDER.classList.toggle('hidden');
+    openDropDown();
     placeholderStart.textContent = parkFeature[currentLocation].name;
     placeholderStart.style.backgroundColor = BACKGROUND_COLORS[currentLocation];
     placeholderStart.style.color = "#f7f2db";
@@ -969,18 +970,31 @@ window.onload = function () {
     });
   }
 
-  // Testing animating the bike path
-  function colorBikePath() {
-    TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
-      stroke: 'orange',
+  function openDropDown() {
+    PATH_FINDER.classList.remove('hidden');
+    TweenMax
+    .from(PATH_FINDER, 1, {
+      delay: 0.5,
+      opacity: 0,
+      top: 10,
+      onComplete:  function() {
+        PATH_FINDER.style.opacity = 1;
+        PATH_FINDER.style.top = "9vh";
+      }  
     });
+  }
+
+// Testing animating the bike path
+function colorBikePath() {
+  TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
+    stroke: 'orange',
+  });
 }
 
 function resetBikePath() {
   TweenMax.to(MAP_SVG.getElementById('bike_path'), 2, {
     stroke: '#f7f2db',
   })
-  
 }
 
 	// END IMAGE GALLERY SCRIPT ----------
