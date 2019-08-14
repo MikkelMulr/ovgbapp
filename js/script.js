@@ -333,17 +333,18 @@ window.onload = function () {
 	// if anywhere in the map is clicked the dropdown will close
 	MAP_SVG.addEventListener('click', function (e) {
 		openFullScreen();
-		//reset the place holder text to where to?
+    closeDropDown();
+    //reset the place holder text to where to?
 		PLACE_HOLDER.textContent = "Where to?";
-
+    
 		DROP_DOWN_ITEM_START.forEach((item, i) => {
-			// toggle the hidden class on each item in the list (unhiding them)
+      // toggle the hidden class on each item in the list (unhiding them)
 			if (i !== 0) {
-				item.classList.add('hidden');
+        item.classList.add('hidden');
 			} else {
-				item.classList.remove('hidden');
+        item.classList.remove('hidden');
 			}
-			PATH_FINDER.classList.add('hidden'); // hide pathfinder dropdown
+			// PATH_FINDER.classList.add('hidden'); // hide pathfinder dropdown
 			// hide endpoint menu while starting point is being selected
 			END_POINT.classList.remove('hidden');
 
