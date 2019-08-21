@@ -553,18 +553,14 @@ window.onload = function () {
 			openDropDown();
     }
 
-
     placeholderStart.textContent = parkFeature[currentLocation].name;
     placeholderStart.style.backgroundColor = parkFeature[currentLocation].colour;
     placeholderStart.style.color = "#f7f2db";
 
-		// To accommodate the dropdowns removing redundant locations
-		if (destination) {
-			placeholderEnd.textContent = parkFeature[destination].name;
-		} else {
+		if (!destination) {
       placeholderEnd.textContent = 'Where to?';
-			placeholderEnd.style.backgroundColor = "#f7f2db"; 
-			placeholderEnd.style.color = "#383838"; 
+      placeholderEnd.style.backgroundColor = "#f7f2db"; 
+      placeholderEnd.style.color = "#383838"; 
     }
 	});
 
@@ -634,12 +630,12 @@ window.onload = function () {
 					destination = i - 1;
 				}
 
-        if(destination) {
-          placeholderEnd.textContent = parkFeature[destination].name;
-        } else {
+        if(!destination) {
           placeholderEnd.textContent = 'Where to?';
           placeholderEnd.style.backgroundColor = "#f7f2db"; 
         }
+        
+        // placeholderEnd.textContent = parkFeature[destination].name;
 			});
 		});
 		endDropDownState = false;
