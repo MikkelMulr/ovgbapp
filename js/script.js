@@ -542,7 +542,6 @@ window.onload = function () {
 	});
 
 	TOP_BAR.addEventListener('click', function () {
-    console.log("From Top bar: " + destination);
 		// openFullScreen();
 		// change the text on place holder
 		PLACE_HOLDER.textContent = "Select Destination";
@@ -1211,10 +1210,12 @@ function closeDropDown() {
     opacity: 0,
     top: 15,
     height: 10 +'vh',
+    overflow: "hidden",
     onComplete:  function() {
       PATH_FINDER.style.opacity = 1;
       PATH_FINDER.style.top = "10vh";
       PATH_FINDER.style.height = '15vh';
+      PATH_FINDER.style.overflow = "unset";
       dropdownState = false;
       PATH_FINDER.classList.add('hidden');
     }  
