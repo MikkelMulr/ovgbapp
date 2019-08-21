@@ -526,11 +526,6 @@ window.onload = function () {
 			// hide endpoint menu while starting point is being selected
 			END_POINT.classList.remove('hidden');
 
-			// Update to and from values to prevent errors when drop downs are left open upon outside click on map
-			placeholderStart.textContent = parkFeature[id].name;
-			// Reset destination display text
-			placeholderEnd.textContent = 'Where to?'
-
 		});
 
 		DROP_DOWN_ITEM_END.forEach((item, i) => {
